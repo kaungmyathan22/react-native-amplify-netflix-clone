@@ -5,18 +5,24 @@ import { FlatList, Image, Pressable } from 'react-native'
 import movie from '../../assets/data/movie'
 import EpisodeItem from '../../components/EpisodeItem';
 import { Text, View } from '../../components/Themed'
+import VideoPlayer from '../../components/VideoPlayer';
 import styles from './styles';
 
 const firstEpisode = movie.seasons.items[0].episodes.items[0];
 const firstSeasons = movie.seasons.items[0];
 
 const MovieDetailsScreen = () => {
+
     const [currentSeason, setcurrentSeason] = useState(firstSeasons)
+    const [currentEpisode, setcurrentEpisode] = useState(firstSeasons.episodes.items[0])
     const seasonNames = movie.seasons.items.map(item => item.name)
+
     return (
         <View>
-            <Image style={styles.image} source={{ uri: firstEpisode.poster }} />
+            <VideoPlayer episode={currentEpisode} />
             <FlatList
+                data={currentSeason.episodes.items}
+                renderItem={({ item }) => (<EpisodeItem onPress={setcurrentEpisode} episode={item} />)}
                 style={{ marginBottom: 250 }}
                 ListHeaderComponent={(<View style={{ padding: 12 }}>
                     <Text style={styles.title}>{movie.title}</Text>
@@ -71,9 +77,7 @@ const MovieDetailsScreen = () => {
                     </Picker>
                 </View>)
                 }
-
-                data={firstSeasons.episodes.items}
-                renderItem={({ item }) => (<EpisodeItem episode={item} />)} />
+            />
         </View >
     )
 }
