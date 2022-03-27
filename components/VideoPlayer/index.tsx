@@ -13,7 +13,7 @@ const VideoPlayer = ({ episode }: VideoPlayerProps) => {
 
     const [status, setStatus] = useState({});
 
-    const video = useRef<Playback>(null);
+    const video = useRef<Video>(null);
 
     useEffect(() => {
         if (!video) { return; }
@@ -24,7 +24,14 @@ const VideoPlayer = ({ episode }: VideoPlayerProps) => {
 
 
     return (
-        <Video posterStyle={{ resizeMode: 'cover' }} usePoster={true} posterSource={{ uri: episode.poster }} onPlaybackStatusUpdate={status => setStatus(() => status)} resizeMode="contain" style={styles.video} useNativeControls isLooping source={{ uri: episode.video }} ref={video} />
+        <Video
+            posterStyle={{ resizeMode: 'cover' }}
+            usePoster={true}
+            posterSource={{ uri: episode.poster }}
+            onPlaybackStatusUpdate={status => setStatus(() => status)} resizeMode="contain" style={styles.video}
+            useNativeControls
+            isLooping
+            source={{ uri: episode.video }} ref={video} />
     )
 }
 
