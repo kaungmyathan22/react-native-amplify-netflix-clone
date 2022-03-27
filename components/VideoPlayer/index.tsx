@@ -28,7 +28,9 @@ const VideoPlayer = ({ episode }: VideoPlayerProps) => {
             posterStyle={{ resizeMode: 'cover' }}
             usePoster={true}
             posterSource={{ uri: episode.poster }}
-            onPlaybackStatusUpdate={status => setStatus(() => status)} resizeMode="contain" style={styles.video}
+            onPlaybackStatusUpdate={status => setStatus(() => status)}
+            resizeMode="contain"
+            style={styles.video}
             useNativeControls
             isLooping
             source={{ uri: episode.video }} ref={video} />
