@@ -8,6 +8,11 @@ declare global {
   }
 }
 
+export type HomeParamList = {
+  HomeScreen: undefined;
+  MovieDetails: undefined;
+};
+
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   Modal: undefined;

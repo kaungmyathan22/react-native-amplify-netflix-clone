@@ -12,6 +12,7 @@ interface HomeCategoryProps {
         id: string;
         title: string;
         movies: MovieProps[];
+        casts: string[];
     }
 }
 
