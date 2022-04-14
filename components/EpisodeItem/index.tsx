@@ -1,7 +1,7 @@
 import { AntDesign } from '@expo/vector-icons'
 import React from 'react'
 import { Image, Pressable } from 'react-native'
-import { Episode } from '../../types'
+import { Episode } from '../../src/models'
 import { Text, View } from '../Themed'
 import styles from './styles'
 

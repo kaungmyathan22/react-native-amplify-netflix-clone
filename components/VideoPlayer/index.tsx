@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
-import { Episode } from '../../types';
 import { Video } from 'expo-av';
 import { Playback } from 'expo-av/build/AV';
 import styles from './styles';
+import { Episode } from '../../src/models';
 
 interface VideoPlayerProps {
     episode: Episode;

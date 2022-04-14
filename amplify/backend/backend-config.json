@@ -1,6 +1,6 @@
 {
   "auth": {
-    "netflix7cf6be58": {
+    "netflix83edf5a5": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -23,6 +23,36 @@
           "EMAIL"
         ]
       }
+    }
+  },
+  "api": {
+    "netflix": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authnetflix83edf5a5"
+            }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "netflix83edf5a5",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ]
     }
   }
 }
